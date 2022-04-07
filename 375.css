@@ -1,0 +1,76 @@
+body {
+  width: 100%;
+}
+
+.navbar {
+  display: none;
+}
+.navbar-mobile {
+  height: 64px;
+  display: flex;
+}
+.navbar-mobile .navbar-mobile-container {
+  width: 85%;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+#icon-menu {
+  margin-right: 1em;
+}
+.navbar-mobile #image-avatar {
+  width: 2em;
+  margin-left: 1em;
+}
+
+.ad {
+  margin: 0;
+  flex-direction: column;
+}
+
+.ad .view,
+.ad .desc {
+  width: 100%;
+}
+
+.ad .view img {
+  border: 0;
+  border-radius: 0;
+}
+.ad .view img:not(:first-of-type) {
+  display: none;
+}
+
+.ad .desc {
+  width: 85%;
+  margin: auto;
+}
+.ad .desc .legend {
+  font-size: 0.8em;
+}
+.ad .desc .title {
+  margin-bottom: 0.8em;
+  font-size: 1.8em;
+}
+.ad .desc .text {
+  margin-bottom: 1.5em;
+}
+.ad .desc .tags {
+  flex-wrap: nowrap;
+  margin-bottom: 1.5em;
+}
+.ad .desc .tags #old-price {
+  width: auto;
+  margin-top: 0;
+  margin-left: auto;
+}
+
+.ad .desc .cartman {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.ad .desc .cartman #quantity,
+.ad .desc .cartman #add {
+  width: 100%;
+  margin-bottom: 1em;
+}

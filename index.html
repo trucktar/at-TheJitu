@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" media="screen and (max-width: 375px)" href="375.css">
+
+  <title>Frontend Mentor | E-commerce product page</title>
+</head>
+
+<body>
+  <nav class="navbar">
+    <a class="navbar-brand" href="/">sneakers</a>
+    <a class="nav-link" href="">Collections</a>
+    <a class="nav-link" href="">Men</a>
+    <a class="nav-link" href="">Women</a>
+    <a class="nav-link" href="">About</a>
+    <a class="nav-link" href="">Contact</a>
+    <img id="icon-cart" src="images/icon-cart.svg" alt="icon-cart">
+    <img id="image-avatar" src="images/image-avatar.png" alt="image-avatar">
+  </nav>
+
+  <nav class="navbar-mobile">
+    <div class="navbar-mobile-container">
+      <img id="icon-menu" src="images/icon-menu.svg" alt="icon-menu">
+      <a class="navbar-brand" href="/">sneakers</a>
+      <img id="icon-cart" src="images/icon-cart.svg" alt="icon-cart">
+      <img id="image-avatar" src="images/image-avatar.png" alt="image-avatar">
+    </div>
+  </nav>
+
+  <section class="ad">
+    <div class="view">
+      <img src="images/image-product-1.jpg" alt="">
+      <img class="active" src="images/image-product-1-thumbnail.jpg" alt="">
+      <img src="images/image-product-2-thumbnail.jpg" alt="">
+      <img src="images/image-product-3-thumbnail.jpg" alt="">
+      <img src="images/image-product-4-thumbnail.jpg" alt="">
+    </div>
+    <div class="desc">
+      <p class="legend">SNEAKER COMPANY</p>
+      <h1 class="title">Fall Limited Edition Sneakers</h1>
+      <p class="text">These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
+      <p class="tags">
+        <span id="new-price">$125.00</span>
+        <span id="discount">50%</span>
+        <span id="old-price">$250.00</span>
+      </p>
+      <div class="cartman">
+        <p id="quantity">
+          <img src="images/icon-minus.svg" alt="icon-minus">
+          <span>0</span>
+          <img src="images/icon-plus.svg" alt="icon-plus">
+        </p>
+        <button id="add">
+          <img src="images/icon-cart-white.svg" alt="icon-cart-white">
+          <span>Add to cart</span>
+        </button>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

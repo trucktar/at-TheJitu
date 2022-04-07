@@ -1,0 +1,180 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  font-size: 16px;
+  font-family: "Kumbh Sans", sans-serif;
+  background-color: hsl(0, 0%, 100%);
+}
+
+.navbar {
+  height: 104px;
+  display: flex;
+  align-items: center;
+  border-bottom: 0.15em hsl(220, 14%, 75%) solid;
+}
+.navbar-mobile {
+  display: none;
+}
+.navbar a,
+.navbar-mobile a {
+  text-decoration: none;
+}
+.navbar a {
+  margin-right: 1.8em;
+}
+.navbar-brand {
+  margin-top: -0.2em;
+  font-size: 2em;
+  font-weight: 700;
+  color: hsl(220, 13%, 13%);
+}
+.navbar .nav-link {
+  padding: 2.5em 0;
+  font-weight: 400;
+  color: hsl(219, 9%, 45%);
+}
+.navbar .nav-link:hover {
+  border-bottom: 0.25em hsl(26, 100%, 55%) solid;
+  color: hsl(220, 13%, 13%);
+}
+img:not(#cartman #add img) {
+  cursor: pointer;
+}
+#icon-cart {
+  margin-left: auto;
+}
+.navbar #image-avatar {
+  width: 52px;
+  margin-left: 2em;
+}
+.navbar #image-avatar:hover {
+  width: 44px;
+  border: 0.25em hsl(26, 100%, 55%) solid;
+  border-radius: 50%;
+}
+
+.ad {
+  margin: 5em 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.ad .view,
+.ad .desc {
+  width: 40%;
+  display: flex;
+}
+.ad .view {
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.ad .view img {
+  border-radius: 0.8em;
+}
+.ad .view .active {
+  border: 0.2em hsl(26, 100%, 55%) solid;
+  opacity: 25%;
+}
+.ad .view img:first-of-type {
+  width: 100%;
+  margin-bottom: 1.5em;
+}
+.ad .view img:not(:first-of-type) {
+  width: 20%;
+}
+.ad .view img:not(:first-of-type):hover {
+  opacity: 25%;
+}
+
+.ad .desc {
+  flex-direction: column;
+}
+.ad .desc .legend {
+  margin-bottom: 1em;
+  font-weight: 700;
+  color: hsl(26, 100%, 55%);
+}
+.ad .desc .title {
+  margin-bottom: 0.5em;
+  font-size: 2.8em;
+  font-weight: 700;
+}
+.ad .desc .text {
+  margin-bottom: 1em;
+  color: hsl(219, 9%, 45%);
+  line-height: 1.5;
+}
+.ad .desc .tags {
+  margin-bottom: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.ad .desc .tags #new-price {
+  font-size: 1.8em;
+  font-weight: 700;
+  margin-right: 0.5em;
+}
+.ad .desc .tags #discount {
+  padding: 0 0.5em;
+  border-radius: 0.2em;
+  font-weight: 700;
+  color: hsl(26, 100%, 55%);
+  background-color: hsl(25, 100%, 94%);
+}
+.ad .desc .tags #old-price {
+  width: 100%;
+  margin-top: 0.5em;
+  font-size: 1em;
+  font-weight: 700;
+  color: hsl(220, 14%, 75%);
+  text-decoration: line-through;
+}
+
+.ad .desc .cartman {
+  margin-bottom: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ad .desc .cartman #quantity {
+  width: 30%;
+  padding: 1em;
+  border-radius: 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+  background-color: hsl(223, 64%, 98%);
+}
+.ad .desc .cartman #quantity img:hover {
+  opacity: 75%;
+}
+.ad .desc .cartman #add {
+  width: 60%;
+  padding: 1em;
+  border-style: none;
+  border-radius: 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: 700;
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(26, 100%, 55%);
+  cursor: pointer;
+}
+.ad .desc .cartman #add img {
+  margin-right: 0.5em;
+}
+.ad .desc .cartman #add:hover {
+  opacity: 75%;
+}

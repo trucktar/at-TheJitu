@@ -87,7 +87,6 @@ main > section > header > section > p:last-child {
 }
 main > section:first-child > nav {
   grid-row: 4 / 6;
-  align-items: flex-end;
   border-radius: 1em;
 }
 main > section:first-child > nav > p {

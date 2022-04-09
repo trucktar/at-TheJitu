@@ -1,0 +1,37 @@
+body {
+  height: auto;
+}
+main {
+  width: 88%;
+  margin: 5em auto;
+  grid-template-columns: 1fr;
+}
+main > section > header {
+  padding-bottom: 0.4em;
+}
+main > section:first-child > header {
+  grid-row: 1 / 4;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+main > section:first-child > header > img {
+  margin-right: 1em;
+  width: 30%;
+}
+main > section > header > section > p:last-child {
+  font-size: 1.4em;
+}
+main > section:first-child > nav {
+  grid-row: 4 / 6;
+  border-radius: 1em;
+}
+main > section:first-child > nav > p {
+  width: auto;
+}
+main > section:first-child > nav > p:not(:last-child) {
+  margin: 0;
+}
+main > section > footer > p:first-child {
+  font-size: 2em;
+}

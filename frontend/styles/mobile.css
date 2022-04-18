@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   font-size: 16px;
+  line-height: 1.5;
 }
 
 body {
@@ -54,6 +55,75 @@ nav > div:nth-of-type(2) > a:last-child {
   margin-bottom: 2.5rem;
 }
 
-nav > div > a > img {
+nav > div:nth-of-type(1) > a > img {
   width: 2rem;
+}
+
+header {
+  padding: 2rem;
+  padding-bottom: 7rem;
+  display: flex;
+  flex-direction: column;
+  background-image: url(../images/hero.png);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+header > article {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2rem;
+  text-align: center;
+  color: #ffffff;
+}
+header > section {
+}
+
+header > article > h2 {
+  margin-top: 2rem;
+  font-size: 2.5rem;
+}
+header > article > p {
+  margin: 2rem 2.5rem;
+  font-size: 1.25rem;
+}
+header > article > a {
+  padding: 0.5rem 2rem;
+  margin-bottom: 1.5rem;
+  border-radius: 2rem;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+}
+header > article > a:first-of-type {
+  background-color: #23a6f0;
+}
+header > article > a:last-of-type {
+  border: 1px #ffffff solid;
+}
+header > section > article {
+  margin: 2rem 0;
+  padding: 2rem;
+  background-color: #ffffff;
+}
+header > section > article:last-child {
+  background-color: #23a6f0;
+  color: #ffffff;
+}
+
+header > section > article > img {
+  width: 3.5rem;
+}
+header > section > article > h3 {
+  margin: 0.5rem 0;
+  font-size: 1.5rem;
+}
+header > section > article > p {
+  color: #737373;
+}
+header > section > article:last-child > p {
+  color: #ffffff;
 }

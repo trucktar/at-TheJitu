@@ -2,19 +2,18 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-size: 16px;
   line-height: 1.5;
 }
 
 body {
   background-color: #fafafa;
+  font-size: 15px;
 }
 
 nav {
   padding: 2rem;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   background-color: #f6f6f6;
 }
 
@@ -25,13 +24,15 @@ nav > h1 {
 nav > div:nth-of-type(1) {
   margin-left: auto;
   display: flex;
+  gap: 1rem;
 }
 nav > div:nth-of-type(2) {
-  margin: 2.5rem 0;
+  margin: 4.5rem 0;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 2rem;
 }
 nav > div:nth-of-type(3) {
   display: none;
@@ -45,25 +46,16 @@ nav > div > a {
 nav > div:nth-of-type(1) > a {
   height: 2rem;
 }
-nav > div:nth-of-type(1) > a:not(:first-child) {
-  margin-left: 1rem;
-}
-nav > div:nth-of-type(2) > a {
-  margin-top: 2.5rem;
-}
-nav > div:nth-of-type(2) > a:last-child {
-  margin-bottom: 2.5rem;
-}
 
 nav > div:nth-of-type(1) > a > img {
   width: 2rem;
 }
 
 header {
-  padding: 2rem;
-  padding-bottom: 7rem;
+  padding: 5rem 2.5rem 12rem;
   display: flex;
   flex-direction: column;
+  gap: 4rem;
   background-image: url(../images/hero.png);
   background-position: bottom;
   background-repeat: no-repeat;
@@ -71,24 +63,24 @@ header {
 }
 
 header > article {
-  margin: 2rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 2rem;
   text-align: center;
   color: #ffffff;
 }
 header > section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
 }
 
 header > article > h2 {
-  margin-top: 2rem;
-  font-size: 2.5rem;
+  font-size: 2.4rem;
 }
 header > article > p {
-  width: 78%;
-  margin: 2rem 0;
+  margin: 2.5rem 0;
+  padding: 0 2rem;
   font-size: 1.25rem;
 }
 header > article > a {
@@ -106,8 +98,7 @@ header > article > a:last-of-type {
   border: 1px #ffffff solid;
 }
 header > section > article {
-  margin: 2rem 0;
-  padding: 2rem;
+  padding: 2rem 2.5rem;
   background-color: #ffffff;
 }
 header > section > article:last-child {
@@ -116,13 +107,14 @@ header > section > article:last-child {
 }
 
 header > section > article > img {
-  width: 3.5rem;
+  width: 3rem;
 }
 header > section > article > h3 {
-  margin: 0.5rem 0;
-  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
 }
 header > section > article > p {
+  font-size: 14px;
   color: #737373;
 }
 header > section > article:last-child > p {
@@ -130,31 +122,30 @@ header > section > article:last-child > p {
 }
 
 header + section {
-  padding: 2.5rem;
+  padding: 6rem 2.5rem;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
+  gap: 6rem;
   background-color: #ffffff;
 }
 header + section > article {
   width: 100%;
-  margin: 2.5rem 0;
+  padding: 0 2.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
 header + section > article > img {
-  margin: 1rem 0;
+  margin-bottom: 1rem;
+  width: 5rem;
 }
 header + section > article > h3 {
   margin: 0.5rem 0;
-  font-size: 1.17rem;
+  font-size: 1rem;
   color: #252b42;
 }
 header + section > article > p {
-  width: 80%;
   color: #737373;
 }
 

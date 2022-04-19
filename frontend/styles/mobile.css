@@ -127,3 +127,31 @@ header > section > article > p {
 header > section > article:last-child > p {
   color: #ffffff;
 }
+
+header + section {
+  padding: 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+header + section > article {
+  width: 100%;
+  margin: 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+header + section > article > img {
+  margin: 1rem 0;
+}
+header + section > article > h3 {
+  margin: 0.5rem 0;
+  font-size: 1.17rem;
+  color: #252b42;
+}
+header + section > article > p {
+  width: 80%;
+  color: #737373;
+}

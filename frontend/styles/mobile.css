@@ -87,7 +87,8 @@ header > article > h2 {
   font-size: 2.5rem;
 }
 header > article > p {
-  margin: 2rem 2.5rem;
+  width: 78%;
+  margin: 2rem 0;
   font-size: 1.25rem;
 }
 header > article > a {
@@ -134,6 +135,7 @@ header + section {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
+  background-color: #ffffff;
 }
 header + section > article {
   width: 100%;
@@ -154,4 +156,105 @@ header + section > article > h3 {
 header + section > article > p {
   width: 80%;
   color: #737373;
+}
+
+main {
+  padding: 2rem;
+}
+
+main > article {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+main > aside {
+}
+main > form {
+}
+main > section {
+}
+
+main > article > h2 {
+  font-size: 2.5rem;
+  font-weight: 400;
+}
+main > article > p {
+  margin: 1rem 0;
+  padding: 0 1.5rem;
+  color: #737373;
+}
+main > article > section {
+  margin: 3rem 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+main > article > div {
+}
+main > article > img {
+}
+main > aside > div {
+}
+main > aside > section {
+}
+main > form > img {
+}
+main > form > h3 {
+}
+main > form > div {
+}
+main > section > h3 {
+}
+main > section > p {
+}
+main > section > a {
+}
+
+main > article > section > div {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: #ffffff;
+  border: 1px #dedede solid;
+  border-radius: 0.5rem;
+  align-items: center;
+  color: #737373;
+}
+main > article > section > article {
+}
+main > article > div > h2 {
+}
+main > article > div > p {
+}
+main > aside > div > img {
+}
+main > aside > section > h3 {
+}
+main > aside > section > input {
+}
+main > aside > section > button {
+}
+main > form > div > label {
+}
+main > form > div > label > input {
+}
+
+main > article > section > div > img {
+  width: 10rem;
+}
+main > article > section > article > h3 {
+}
+main > article > section > article > h4 {
+}
+main > article > section > article > p {
+}
+main > article > section > article > ul {
+}
+main > article > section > article > a {
+}
+
+main > article > section > article > ul > li {
 }

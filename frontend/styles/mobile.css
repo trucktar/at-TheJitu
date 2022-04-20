@@ -156,69 +156,35 @@ header + section > article > p {
   color: #737373;
 }
 
-main {
-  padding: 2rem;
-}
-
+/* Level 4 */
+/* Level 4.1 */
 main > article {
-  margin: 2rem 0;
+  padding: 3rem 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
-main > aside {
-  display: flex;
-  gap: 5rem;
-  flex-direction: column;
-  align-items: center;
-}
-main > form {
-}
-main > section {
-}
-
 main > article > h2 {
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   font-weight: 400;
 }
 main > article > p {
-  margin: 1rem 0;
-  padding: 0 1.5rem;
+  margin-top: 0.5rem;
+  padding: 0 1rem;
   color: #737373;
 }
+/* Level 4.1.3 */
 main > article > section {
-  margin: 3rem 0;
+  width: 100%;
+  margin-top: 3rem;
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
 }
-main > article > div {
-}
-main > article > img {
-}
-main > aside > div {
-  display: flex;
-  flex-direction: column;
-  gap: 3.5rem;
-}
-main > aside > section {
-}
-main > form > img {
-}
-main > form > h3 {
-}
-main > form > div {
-}
-main > section > h3 {
-}
-main > section > p {
-}
-main > section > a {
-}
-
+/* Level 4.1.3.1 */
 main > article > section > div {
-  padding: 2.5rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -228,39 +194,188 @@ main > article > section > div {
   align-items: center;
   color: #737373;
 }
-main > article > section > article {
-}
-main > article > div > h2 {
-}
-main > article > div > p {
-}
-main > aside > div > img {
+main > article > section > div > img {
   width: 10rem;
 }
-main > aside > section > h3 {
+/* Level 4.2 */
+main > aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-main > aside > section > input {
+/* Level 4.2.1 */
+main > aside > section {
+  margin: 5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
 }
-main > aside > section > button {
+main > aside > section > img {
+  width: 9rem;
+}
+/* Level 4.2.2 */
+main > aside > form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-image: linear-gradient(to right, #004788, #d51489);
+  text-align: center;
+}
+main > aside > form > h3 {
+  margin: 2rem 0;
+  padding: 0 2.5rem;
+  font-size: 1.4rem;
+  color: #ffffff;
+}
+/* Level 4.2.2.2 */
+main > aside > form > div {
+  width: 100%;
+  margin-bottom: 2rem;
+  padding: 0 2.5rem;
+  display: flex;
+}
+main > aside > form > div > input {
+  width: 100%;
+  padding: 1rem;
+  border: 0;
+  border-top-left-radius: 0.3rem;
+  border-bottom-left-radius: 0.3rem;
+}
+main > aside > form > div > button {
+  padding: 1rem 1.5rem;
+  background-color: #23a6f0;
+  border: 1px solid white;
+  border-top-right-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+  color: #ffffff;
+  text-decoration: none;
+}
+/* Level 4.3 */
+main > article:nth-child(3) {
+  padding: 2.5rem 2.5rem 6rem;
+}
+/* Level 4.3.3.1 */
+main > article > section > article {
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: #ffffff;
+  border: 1px solid #23a6f0;
+}
+main > article > section > article > h3 {
+  font-size: 1.4rem;
+  color: #252b42;
+}
+main > article > section > article > h4 {
+  padding: 0 2rem;
+  font-size: 1rem;
+  color: #737373;
+}
+/* Level 4.3.3.1.3 */
+main > article > section > article > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-align: left;
+  font-weight: 700;
+}
+main > article > section > article > div > p:first-child {
+  font-size: 2rem;
+  color: #23a6f0;
+}
+main > article > section > article > div > p > small:first-child {
+  font-size: 1.2rem;
+  color: #23a6f0;
+}
+main > article > section > article > div > p > small:last-child {
+  font-size: 15px;
+  color: #004788;
+}
+/* Level 4.3.3.1.4 */
+main > article > section > article > ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 14px;
+}
+main > article > section > article > ul > li::before {
+  width: 2.5rem;
+  height: 2.5rem;
+  content: url(../images/icons/checkmark-circle-green.svg);
+  color: #ffffff;
+}
+main > article > section > article > ul > li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: left;
+  list-style-type: none;
+}
+main > article > section > article > a {
+  width: 100%;
+  padding: 1rem 0;
+  background-color: #23a6f0;
+  border-radius: 0.2rem;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+}
+/* Level 4.3.3.2 */
+main > article > section > article:nth-child(2) {
+  background-color: #252b42;
+  color: #ffffff;
+}
+main > article > section > article:nth-child(2) > h3 {
+  color: #ffffff;
+}
+main > article > section > article:nth-child(2) > h4 {
+  color: #ffffff;
+}
+
+/* Level 4.4 */
+main > article:nth-child(4) {
+  padding: 8rem 3rem;
+  background-color: #252b42;
+  text-align: left;
+  color: #ffffff;
+}
+main > article > div {
+}
+main > article > div > h2 {
+  font-size: 2.4em;
+}
+main > article > div > p {
+  margin: 1.5rem 0;
+}
+main > article > img {
+  width: 100%;
+  margin-top: 8rem;
+}
+
+/* Level 4.5 */
+main > form {
+}
+main > form > img {
+}
+main > form > h3 {
+}
+main > form > div {
 }
 main > form > div > label {
 }
 main > form > div > label > input {
 }
-
-main > article > section > div > img {
-  width: 10rem;
-}
-main > article > section > article > h3 {
-}
-main > article > section > article > h4 {
-}
-main > article > section > article > p {
-}
-main > article > section > article > ul {
-}
-main > article > section > article > a {
+main > form > div > button {
 }
 
-main > article > section > article > ul > li {
+/* Level 4.6 */
+main > section > a {
+}
+main > section > h3 {
+}
+main > section > p {
+}
+main > section {
 }

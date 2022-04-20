@@ -10,34 +10,25 @@ body {
   font-size: 15px;
 }
 
+/* Level 1 */
 nav {
   padding: 2rem;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   background-color: #f6f6f6;
 }
-
 nav > h1 {
   font-size: 1.5rem;
   color: #252b42;
 }
+/* Level 1.2 */
 nav > div:nth-of-type(1) {
   margin-left: auto;
+  margin-top: -0.5rem;
   display: flex;
   gap: 1rem;
 }
-nav > div:nth-of-type(2) {
-  margin: 4.5rem 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-}
-nav > div:nth-of-type(3) {
-  display: none;
-}
-
 nav > div > a {
   text-decoration: none;
   color: #737373;
@@ -46,11 +37,24 @@ nav > div > a {
 nav > div:nth-of-type(1) > a {
   height: 2rem;
 }
-
 nav > div:nth-of-type(1) > a > img {
   width: 2rem;
 }
+/* Level 1.3 */
+nav > div:nth-of-type(2) {
+  width: 100%;
+  margin: 4.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+/* Level 1.4 */
+nav > div:nth-of-type(3) {
+  display: none;
+}
 
+/* Level 2 */
 header {
   padding: 5rem 2.5rem 12rem;
   display: flex;
@@ -61,7 +65,7 @@ header {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
+/* Level 2.1 */
 header > article {
   display: flex;
   flex-direction: column;
@@ -69,12 +73,6 @@ header > article {
   text-align: center;
   color: #ffffff;
 }
-header > section {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-}
-
 header > article > h2 {
   font-size: 2.4rem;
 }
@@ -97,15 +95,17 @@ header > article > a:first-of-type {
 header > article > a:last-of-type {
   border: 1px #ffffff solid;
 }
+/* Level 2.2 */
+header > section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+/* Level 2.2.1 */
 header > section > article {
   padding: 2rem 2.5rem;
   background-color: #ffffff;
 }
-header > section > article:last-child {
-  background-color: #23a6f0;
-  color: #ffffff;
-}
-
 header > section > article > img {
   width: 3rem;
 }
@@ -117,10 +117,16 @@ header > section > article > p {
   font-size: 14px;
   color: #737373;
 }
+/* Level 2.2.3 */
+header > section > article:last-child {
+  background-color: #23a6f0;
+  color: #ffffff;
+}
 header > section > article:last-child > p {
   color: #ffffff;
 }
 
+/* Level 3 */
 header + section {
   padding: 6rem 2.5rem;
   display: flex;
@@ -128,6 +134,7 @@ header + section {
   gap: 6rem;
   background-color: #ffffff;
 }
+/* Level 3.1 */
 header + section > article {
   width: 100%;
   padding: 0 2.5rem;

@@ -60,7 +60,8 @@ header {
   display: flex;
   flex-direction: column;
   gap: 4rem;
-  background-image: url(../images/hero.png);
+  background-image: radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../images/hero.png);
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
@@ -166,7 +167,7 @@ header + section > article > p {
 /* Level 4 */
 /* Level 4.1 */
 main > article {
-  padding: 3rem 4rem;
+  padding: 3rem 3.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -174,7 +175,8 @@ main > article {
 }
 main > article > h2 {
   font-size: 2.4rem;
-  font-weight: 400;
+  font-weight: 700;
+  color: #252b42;
 }
 main > article > p {
   margin-top: 0.5rem;
@@ -204,6 +206,15 @@ main > article > section > div {
 main > article > section > div > img {
   width: 10rem;
 }
+main > article > section > div > p::after {
+  width: 2em;
+  margin-left: 3em;
+  margin-top: 1em;
+  display: flex;
+  content: url(../images/icons/star.svg) url(../images/icons/star.svg)
+    url(../images/icons/star.svg) url(../images/icons/star.svg)
+    url(../images/icons/star-outline.svg);
+}
 /* Level 4.2 */
 main > aside {
   display: flex;
@@ -222,37 +233,41 @@ main > aside > section > img {
 }
 /* Level 4.2.2 */
 main > aside > form {
+  padding: 2rem;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  gap: 2rem;
   background-image: linear-gradient(to right, #004788, #d51489);
   text-align: center;
 }
 main > aside > form > h3 {
-  margin: 2rem 0;
-  padding: 0 2.5rem;
   font-size: 1.4rem;
   color: #ffffff;
 }
+main > aside > form > div {
+  display: flex;
+  border: 1px solid #ffffff;
+  border-radius: 0.2rem;
+}
 main > aside > form > div > input {
   width: 100%;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
   border: 0;
-  border-top-left-radius: 0.3rem;
-  border-bottom-left-radius: 0.3rem;
+  border-top-left-radius: 0.2rem;
+  border-bottom-left-radius: 0.2rem;
 }
 main > aside > form > div > button {
   padding: 1rem 1.5rem;
   background-color: #23a6f0;
-  border: 1px solid white;
-  border-top-right-radius: 0.3rem;
-  border-bottom-right-radius: 0.3rem;
+  border: 0;
+  border-top-right-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
   color: #ffffff;
   text-decoration: none;
 }
 /* Level 4.3 */
 main > article:nth-child(3) {
-  padding: 2.5rem 2.5rem 6rem;
+  padding: 3rem 2.5rem 6rem;
 }
 /* Level 4.3.3.1 */
 main > article > section > article {

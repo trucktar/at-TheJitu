@@ -81,18 +81,25 @@ header > article > p {
   padding: 0 2rem;
   font-size: 1.25rem;
 }
-header > article > a {
-  padding: 0.5rem 2rem;
+/* Level 2.1.3 */
+header > article > div {
   margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+header > article > div > a {
+  padding: 0.5rem 2rem;
   border-radius: 2rem;
   color: #ffffff;
   text-decoration: none;
   font-weight: 700;
 }
-header > article > a:first-of-type {
+header > article > div > a:first-of-type {
   background-color: #23a6f0;
 }
-header > article > a:last-of-type {
+header > article > div > a:last-of-type {
   border: 1px #ffffff solid;
 }
 /* Level 2.2 */
@@ -129,8 +136,8 @@ header > section > article:last-child > p {
 /* Level 3 */
 header + section {
   padding: 6rem 2.5rem;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 6rem;
   background-color: #ffffff;
 }
@@ -226,13 +233,6 @@ main > aside > form > h3 {
   padding: 0 2.5rem;
   font-size: 1.4rem;
   color: #ffffff;
-}
-/* Level 4.2.2.2 */
-main > aside > form > div {
-  width: 100%;
-  margin-bottom: 2rem;
-  padding: 0 2.5rem;
-  display: flex;
 }
 main > aside > form > div > input {
   width: 100%;

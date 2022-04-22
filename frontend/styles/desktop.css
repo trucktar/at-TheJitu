@@ -86,6 +86,7 @@ header + section > article {
 /* Level 4.1 */
 main > article {
   padding: 4rem 11rem;
+  align-items: flex-start;
 }
 main > article > p {
   margin-top: 0.5rem;
@@ -153,13 +154,60 @@ main > article > section > article:nth-child(2) {
 }
 /* Level 4.4 */
 main > article:nth-child(4) {
-  padding: 6rem 10rem;
+  height: 110vh;
+  padding: 6rem 10rem 0;
   flex-direction: row;
-  gap: 10rem;
+  gap: 8rem;
 }
 main > article:nth-child(4) > div {
-  width: 110%;
+  width: 50%;
 }
 main > article:nth-child(4) > img {
-  margin: 0;
+  width: 50%;
+  margin-top: 1rem;
+}
+/* Level 4.5 */
+main > form {
+  position: relative;
+  top: -40vh;
+  width: 65%;
+  margin: 0 auto;
+  flex-wrap: nowrap;
+  background-color: #ffffff;
+}
+/* Level 4.5.2 */
+main > form > img {
+  width: 50%;
+  object-fit: cover;
+  object-position: 80% 0;
+}
+main > form > div > h3 {
+  font-size: 1.4rem;
+  text-align: center;
+}
+/* Level 4.6 */
+main > section {
+  padding: 3rem 10rem;
+  border: 0;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Level 5 */
+/* Level 5.1 */
+footer > div:nth-child(1),
+footer > div:nth-child(2) {
+  padding-left: 10rem;
+  padding-right: 10rem;
+}
+footer > div:nth-child(1),
+footer > div:nth-child(2) {
+  justify-content: space-between;
+}
+footer > div:nth-child(2) {
+  align-items: center;
+}
+/* Level 5.1.1 */
+footer > div > section {
+  width: auto;
 }

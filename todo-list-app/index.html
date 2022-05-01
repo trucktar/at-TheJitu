@@ -12,40 +12,47 @@
 <body>
     <main>
         <header>
-            <button style="visibility: hidden;">
+            <button>
                 <img src="icons/arrow-back-outline.svg" alt="">
             </button>
             <h1>Tasks</h1>
         </header>
 
-        <div>
-            <button>
-                <img src="icons/add-outline.svg" alt="">
-            </button>
-            <form action="">
-                <input type="text" placeholder="Add a task" id="addTask">
-            </form>
-        </div>
-
-        <ul></ul>
-
-        <div>
-            <button>
-                <img src="icons/chevron-down-outline.svg" alt="">
-            </button>
-            <h2>Completed</h2>
-        </div>
-
-        <ul>
-            <li style="text-decoration: line-through;">
+        <section class="taskDetail">
+            <div class="taskDetail__title">
                 <button>
-                    <img src="icons/checkmark-circle.svg" alt="">
+                    <img src="icons/add-outline.svg" alt="">
                 </button>
-                Replace WiFi module
-            </li>
-        </ul>
+                <form action="">
+                    <input type="text" placeholder="Add a task" id="addTask">
+                </form>
+            </div>
+            <div class="taskDetail__dueDate">
+                <form action="">
+                    <input type="datetime-local">
+                </form>
+            </div>
+            <div class="taskDetail__description">
+                <form action="">
+                    <textarea name="" id="">Add a description</textarea>
+                </form>
+            </div>
+        </section>
+
+        <section class="taskList">
+            <ul class="taskList__incompleteTasks"></ul>
+
+            <div>
+                <button>
+                    <img src="icons/chevron-down-outline.svg" alt="">
+                </button>
+                <h2>Completed</h2>
+            </div>
+
+            <ul class="taskList__completeTasks"></ul>
+        </section>
     </main>
-    <script src="script.js"></script>
+    <script src="dist/script.js"></script>
 </body>
 
 </html>

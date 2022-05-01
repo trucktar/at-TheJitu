@@ -1,2 +1,3 @@
 .prettierrc
-script.js
+dist/
+.vscode/

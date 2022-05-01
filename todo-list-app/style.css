@@ -39,6 +39,7 @@ main {
 }
 header,
 .taskDetail__title,
+.taskDetail__dueDate,
 .taskList > div {
     padding: 0 0.5rem;
     display: flex;
@@ -53,7 +54,7 @@ header {
 }
 .taskDetail__title,
 .taskDetail__title *,
-/* .taskDetail__dueDate, */
+.taskDetail__dueDate,
 .taskDetail__dueDate *,
 /* .taskDetail__description, */
 .taskDetail__description * {
@@ -82,7 +83,7 @@ header {
     background-color: #ffffff;
     border-bottom: 2px solid #7a45bf;
 }
-.taskDetail__description textarea{
+.taskDetail__description textarea {
     height: auto;
 }
 .taskList > ul {

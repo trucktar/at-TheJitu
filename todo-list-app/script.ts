@@ -1,87 +1,75 @@
 interface TaskOptions {
-    title: string;
+    id?: string;
+    title?: string;
     description?: string;
-    dueDate?: Date;
+    dueDate?: string | null;
+    dateCreated?: string;
+    dateCompleted?: string | null;
+    isComplete?: boolean;
 }
 
-class Task {
-    title: string;
-    description: string = "";
-    dueDate: Date | null = null;
-
-    dateCreated = new Date();
-    dateCompleted: Date | null = null;
-    isComplete = false;
+class Task implements TaskOptions {
+    id?: string;
+    title?: string;
+    description?: string;
+    dueDate?: string | null;
+    dateCreated?: string;
+    dateCompleted?: string | null;
+    isComplete?: boolean;
 
     constructor(opts: TaskOptions) {
+        this.id = opts.id;
         this.title = opts.title;
-        if (opts.description) this.description = opts.description;
-        if (opts.dueDate) this.dueDate = opts.dueDate;
-    }
-
-    markAsComplete() {
-        this.dateCompleted = new Date();
-        this.isComplete = true;
-    }
-
-    markAsIncomplete() {
-        this.dateCompleted = null;
-        this.isComplete = false;
+        this.description = opts.description;
+        this.dueDate = opts.dueDate;
+        this.dateCreated = opts.dateCreated;
+        this.dateCompleted = opts.dateCompleted;
+        this.isComplete = opts.isComplete;
     }
 }
 
-class TaskManager {
-    tasks: Task[] = [];
-    private static taskMan: TaskManager;
+class TaskMan {
+    static tasks: Task[];
 
-    private constructor(...taskObjs: TaskOptions[]) {
-        taskObjs.forEach((taskObj) => this.createTask(taskObj));
+    private constructor() {}
+
+    static async createTask({ title, description = "", dueDate = null }: TaskOptions) {
+        await fetch("http://localhost:7000/tasks/create", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ title, description, dueDate }),
+        });
     }
 
-    static getTaskMan(...taskObjs: TaskOptions[]) {
-        return TaskManager.taskMan || (TaskManager.taskMan = new TaskManager(...taskObjs));
+    static async getAllTasks() {
+        const res = await fetch("http://localhost:7000/tasks");
+        const data = <TaskOptions[]>await res.json();
+        TaskMan.tasks = data.map((opts) => new Task(opts));
     }
 
-    createTask(opts: TaskOptions) {
-        const task = new Task(opts);
-        this.tasks.push(task);
+    static listTasks(options: { complete: boolean }) {
+        if (options.complete) return TaskMan.tasks.filter((task) => task.isComplete);
+        return TaskMan.tasks.filter((task) => !task.isComplete);
     }
 
-    listTasks(options: { complete: boolean }) {
-        if (options.complete) return this.tasks.filter((task) => task.isComplete);
-        return this.tasks.filter((task) => !task.isComplete);
+    static async updateTask({ id, title, description, dueDate }: TaskOptions) {
+        await fetch(`http://localhost:7000/tasks/${id}/update`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ title, description, dueDate }),
+        });
     }
 
-    updateTask(taskId: number, opts: TaskOptions) {
-        Object.assign(this.tasks[taskId], opts);
+    static async updateTaskStatus({ id }: TaskOptions) {
+        await fetch(`http://localhost:7000/tasks/${id}/status`, { method: "PATCH" });
     }
 
-    deleteTask(taskId: number) {
-        this.tasks.splice(taskId, 1);
+    static async deleteTask({ id }: TaskOptions) {
+        await fetch(`http://localhost:7000/tasks/${id}/delete`, { method: "DELETE" });
     }
 }
 
-const todoList: TaskOptions[] = [
-    {
-        title: "Set up Docker",
-        // dueDate: new Date(),
-        description: "Need that to set up SQL Server 2019 on Fedora",
-    },
-    {
-        title: "Review SQL Stored Procedures",
-        dueDate: new Date(),
-        description: "",
-    },
-    {
-        title: "Prepare class on SQL Views",
-        dueDate: new Date(),
-        description: "Just build custom to-do list app",
-    },
-];
-
-const taskMan = TaskManager.getTaskMan(...todoList);
-
-document.addEventListener("DOMContentLoaded", (event) => {
+document.addEventListener("DOMContentLoaded", async (event) => {
     let appHeader = <HTMLHeadingElement>document.querySelector("header h1");
     let appHeaderButton = <HTMLButtonElement>document.querySelector("header button");
 
@@ -91,72 +79,84 @@ document.addEventListener("DOMContentLoaded", (event) => {
     let taskTitleInput = <HTMLInputElement>document.querySelector(".taskDetail__title input");
     let taskDueDateDiv = <HTMLDivElement>document.querySelector(".taskDetail__dueDate");
     let taskDueDateInput = <HTMLInputElement>document.querySelector(".taskDetail__dueDate input");
+    let taskAssigneeDiv = <HTMLDivElement>document.querySelector(".taskDetail__assignee");
+    let taskAssigneeInput = <HTMLInputElement>document.querySelector(".taskDetail__assignee input");
     let taskDescriptionDiv = <HTMLDivElement>document.querySelector(".taskDetail__description");
     let taskDescriptionInput = <HTMLTextAreaElement>document.querySelector(".taskDetail__description textarea");
+    let taskActionsDiv = <HTMLDivElement>document.querySelector(".taskDetail__actions");
+    let taskDeleteButton = <HTMLButtonElement>document.querySelector(".taskDetail__actions button:last-child");
 
     let taskListViewDiv = <HTMLElement>document.querySelector(".taskList");
     let incompleteTasksUList = <HTMLUListElement>document.querySelector(".taskList__incompleteTasks");
     let completeTasksUList = <HTMLUListElement>document.querySelector(".taskList__completeTasks");
 
     let activeView: "taskListView" | "taskDetailView";
-    let activeTaskTitle: string;
+    let activeTask: Task | undefined;
 
-    appHeaderButton.addEventListener("click", (event) => renderTaskListView());
+    appHeaderButton.addEventListener("click", async (event) => await renderTaskListView());
     taskAddButton.addEventListener("click", (event) => taskTitleInput.focus());
-    taskTitleForm.addEventListener("submit", (event) => {
+    taskTitleForm.addEventListener("submit", async (event) => {
         event.preventDefault();
-
         if (taskTitleInput.value.trim())
             if (activeView === "taskDetailView") {
-                const taskId = taskMan.tasks.findIndex((task) => task.title === activeTaskTitle);
-
-                if (activeTaskTitle !== taskTitleInput.value.trim())
-                    taskMan.updateTask(taskId, { title: taskTitleInput.value });
+                await TaskMan.updateTask({
+                    id: activeTask?.id,
+                    title: taskTitleInput.value,
+                    dueDate: taskDueDateInput.valueAsDate?.toISOString(),
+                    description: taskDescriptionInput.value,
+                });
                 taskTitleInput.blur();
             } else {
-                taskMan.createTask({ title: taskTitleInput.value });
-                renderTaskListView();
+                await TaskMan.createTask({ title: taskTitleInput.value });
+                await renderTaskListView();
             }
     });
+    taskDeleteButton.addEventListener("click", async (event) => {
+        await TaskMan.deleteTask({ id: activeTask?.id });
+        await renderTaskListView();
+    });
 
-    function renderTaskListView() {
+    async function renderTaskListView() {
+        await TaskMan.getAllTasks();
+
         updateActiveViewState({
             appHeaderButton: "hidden",
             appHeaderText: "Tasks",
+            taskTitleInput: "",
             taskDueDateDiv: "none",
+            taskAssigneeDiv: "none",
             taskDescriptionDiv: "none",
+            taskActionsDiv: "none",
             taskListViewDiv: "block",
         });
 
         taskTitleDiv.firstElementChild?.remove();
         taskTitleDiv.prepend(taskAddButton);
 
-        incompleteTasksUList.innerHTML = taskMan
-            .listTasks({ complete: false })
+        incompleteTasksUList.innerHTML = TaskMan.listTasks({ complete: false })
             .map(
                 (task) => `
-                <li>
-                    <button title="Mark as complete">
-                        <img src="/icons/ellipse-outline.svg" alt="">
-                    </button>
-                    ${task.title}
-                </li>
-                `
+            <li>
+                <button title="Mark as complete">
+                    <img src="/icons/ellipse-outline.svg" alt="">
+                </button>
+                ${task.title}
+            </li>
+            `
             )
             .join("");
         addTaskListClickHandlers(incompleteTasksUList);
 
-        completeTasksUList.innerHTML = taskMan
-            .listTasks({ complete: true })
+        completeTasksUList.innerHTML = TaskMan.listTasks({ complete: true })
             .map(
                 (task) => `
-                <li>
-                    <button title="Mark as incomplete">
-                        <img src="/icons/checkmark-circle.svg" alt="">
-                    </button>
-                    ${task.title}
-                </li>
-                `
+            <li>
+                <button title="Mark as incomplete">
+                    <img src="/icons/checkmark-circle.svg" alt="">
+                </button>
+                ${task.title}
+            </li>
+            `
             )
             .join("");
         addTaskListClickHandlers(completeTasksUList);
@@ -165,39 +165,41 @@ document.addEventListener("DOMContentLoaded", (event) => {
     function addTaskListClickHandlers(tasksUList: HTMLUListElement) {
         for (const taskLI of <HTMLCollectionOf<HTMLLIElement>>tasksUList.children) {
             const taskCompleteButton = <HTMLButtonElement>taskLI.firstElementChild;
-            const task = taskMan.tasks.find((task) => task.title === taskLI.innerText.trim());
+            const task = TaskMan.tasks.find((task) => task.title === taskLI.innerText.trim());
 
             taskLI.addEventListener("click", (event) => {
                 updateActiveViewState({
                     appHeaderButton: "visible",
                     appHeaderText: "Task Details",
-                    taskTitleText: taskLI.innerText.trim(),
+                    taskTitleInput: taskLI.innerText.trim(),
                     taskDueDateDiv: "flex",
+                    taskAssigneeDiv: "flex",
                     taskDescriptionDiv: "block",
+                    taskActionsDiv: "flex",
                     taskListViewDiv: "none",
                 });
 
                 taskAddButton = taskTitleDiv.removeChild(taskAddButton);
                 taskTitleDiv.prepend(taskCompleteButton);
 
-                if (task?.dueDate) taskDueDateInput.valueAsDate = task.dueDate;
-                if (task?.description) taskDescriptionInput.value = task.description;
+                taskDueDateInput.valueAsDate = task?.dueDate ? new Date(task?.dueDate) : null;
+                taskDescriptionInput.value = task?.description || "";
             });
 
-            taskCompleteButton.addEventListener("click", (event) => {
+            taskCompleteButton.addEventListener("click", async (event) => {
                 event.stopPropagation();
 
                 const taskButtonImg = <HTMLImageElement>taskCompleteButton.firstElementChild;
+                const match = /([a-z\-]+)\.svg/i.exec(taskButtonImg.src);
+                if (match)
+                    taskButtonImg.src = taskButtonImg.src.replace(
+                        match[1],
+                        match[1] === "ellipse-outline" ? "checkmark-circle" : "ellipse-outline"
+                    );
 
-                if (task?.isComplete) {
-                    task?.markAsIncomplete();
-                    taskButtonImg.src = location.origin + "/icons/ellipse-outline.svg";
-                } else {
-                    task?.markAsComplete();
-                    taskButtonImg.src = location.origin + "/icons/checkmark-circle.svg";
-                }
+                await TaskMan.updateTaskStatus({ id: task?.id });
 
-                if (activeView === "taskListView") renderTaskListView();
+                if (activeView === "taskListView") await renderTaskListView();
             });
         }
     }
@@ -205,23 +207,27 @@ document.addEventListener("DOMContentLoaded", (event) => {
     type ViewState = {
         appHeaderButton: "hidden" | "visible";
         appHeaderText: "Tasks" | "Task Details";
-        taskTitleText?: string;
+        taskTitleInput: string;
         taskDueDateDiv: "none" | "flex";
+        taskAssigneeDiv: "none" | "flex";
         taskDescriptionDiv: "none" | "block";
+        taskActionsDiv: "none" | "flex";
         taskListViewDiv: "none" | "block";
     };
 
-    function updateActiveViewState(viewState: ViewState) {
+    const updateActiveViewState = (viewState: ViewState) => {
         appHeaderButton.style.visibility = viewState.appHeaderButton;
         appHeader.innerText = viewState.appHeaderText;
-        taskTitleInput.value = viewState.taskTitleText || "";
+        let title = (taskTitleInput.value = viewState.taskTitleInput);
         taskDueDateDiv.style.display = viewState.taskDueDateDiv;
+        taskAssigneeDiv.style.display = viewState.taskAssigneeDiv;
         taskDescriptionDiv.style.display = viewState.taskDescriptionDiv;
+        taskActionsDiv.style.display = viewState.taskActionsDiv;
         taskListViewDiv.style.display = viewState.taskListViewDiv;
 
         activeView = viewState.appHeaderText === "Tasks" ? "taskListView" : "taskDetailView";
-        activeTaskTitle = taskTitleInput.value;
-    }
+        activeTask = TaskMan.tasks.find((task) => task.title === title);
+    };
 
-    renderTaskListView();
+    await renderTaskListView();
 });

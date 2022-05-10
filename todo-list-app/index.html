@@ -12,7 +12,7 @@
 <body>
     <main>
         <header>
-            <button>
+            <button style="visibility: hidden;">
                 <img src="icons/arrow-back-outline.svg" alt="">
             </button>
             <h1>Tasks</h1>
@@ -23,16 +23,24 @@
                 <button>
                     <img src="icons/add-outline.svg" alt="">
                 </button>
-                <form action="">
-                    <input type="text" placeholder="Add a task" id="addTask">
+                <form id="editTask" action="">
+                    <input type="text" placeholder="Add a task">
                 </form>
             </div>
-            <div class="taskDetail__dueDate">
+            <div class="taskDetail__dueDate" style="display: none;">
                 <img src="/icons/calendar-outline.svg" alt="" title="Add due date">
-                <input type="datetime-local">
+                <input form="editTask" type="datetime-local">
             </div>
-            <div class="taskDetail__description">
-                <textarea name="" id="" placeholder="Add a description"></textarea>
+            <div class="taskDetail__assignee" style="display: none;">
+                <img src="/icons/person-add-outline.svg" alt="" title="Add an assignee">
+                <input form="editTask" type="email" placeholder="Add an assignee">
+            </div>
+            <div class="taskDetail__description" style="display: none;">
+                <textarea rows="7" form="editTask" placeholder="Add a description"></textarea>
+            </div>
+            <div class="taskDetail__actions" style="display: none;">
+                <button form="editTask" type="submit">Save</button>
+                <button>Delete</button>
             </div>
         </section>
 

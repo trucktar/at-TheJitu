@@ -11,9 +11,10 @@ GO
 CREATE TABLE dbo.Tasks
 (
     id            UNIQUEIDENTIFIER DEFAULT NEWID() PRIMARY KEY,
-    title         VARCHAR(30)      NOT NULL,
-    description   VARCHAR(300)     NOT NULL,
+    title         VARCHAR(50)      NOT NULL,
     dueDate       SMALLDATETIME,
+    assignee      VARCHAR(255)     NOT NULL,
+    description   VARCHAR(300)     NOT NULL,
     dateCreated   SMALLDATETIME    DEFAULT GETDATE(),
     dateCompleted SMALLDATETIME,
     isComplete    BIT              DEFAULT 0

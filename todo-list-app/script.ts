@@ -1,8 +1,9 @@
 interface TaskOptions {
     id?: string;
     title?: string;
-    description?: string;
     dueDate?: string | null;
+    description?: string;
+    assignee?: string;
     dateCreated?: string;
     dateCompleted?: string | null;
     isComplete?: boolean;
@@ -11,8 +12,9 @@ interface TaskOptions {
 class Task implements TaskOptions {
     id?: string;
     title?: string;
-    description?: string;
     dueDate?: string | null;
+    assignee?: string;
+    description?: string;
     dateCreated?: string;
     dateCompleted?: string | null;
     isComplete?: boolean;
@@ -20,8 +22,9 @@ class Task implements TaskOptions {
     constructor(opts: TaskOptions) {
         this.id = opts.id;
         this.title = opts.title;
-        this.description = opts.description;
         this.dueDate = opts.dueDate;
+        this.assignee = opts.assignee;
+        this.description = opts.description;
         this.dateCreated = opts.dateCreated;
         this.dateCompleted = opts.dateCompleted;
         this.isComplete = opts.isComplete;
@@ -33,11 +36,11 @@ class TaskMan {
 
     private constructor() {}
 
-    static async createTask({ title, description = "", dueDate = null }: TaskOptions) {
+    static async createTask({ title, dueDate = null, assignee = "", description = "" }: TaskOptions) {
         await fetch("http://localhost:7000/tasks/create", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ title, description, dueDate }),
+            body: JSON.stringify({ title, dueDate, assignee, description }),
         });
     }
 
@@ -52,11 +55,11 @@ class TaskMan {
         return TaskMan.tasks.filter((task) => !task.isComplete);
     }
 
-    static async updateTask({ id, title, description, dueDate }: TaskOptions) {
+    static async updateTask({ id, title, dueDate, assignee, description }: TaskOptions) {
         await fetch(`http://localhost:7000/tasks/${id}/update`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ title, description, dueDate }),
+            body: JSON.stringify({ title, dueDate, assignee, description }),
         });
     }
 
@@ -105,6 +108,7 @@ document.addEventListener("DOMContentLoaded", async (event) => {
                     id: activeTask?.id,
                     title: taskTitleText,
                     dueDate: taskDueDateInput.valueAsDate?.toISOString(),
+                    assignee: taskAssigneeInput.value,
                     description: taskDescriptionInput.value,
                 });
                 taskTitleInput.blur();
@@ -185,6 +189,7 @@ document.addEventListener("DOMContentLoaded", async (event) => {
                 taskTitleDiv.prepend(taskCompleteButton);
 
                 taskDueDateInput.valueAsDate = task?.dueDate ? new Date(task?.dueDate) : null;
+                taskAssigneeInput.value = task?.assignee || "";
                 taskDescriptionInput.value = task?.description || "";
             });
 

@@ -4,17 +4,18 @@ GO
 -- Create a new stored procedure called 'uspCreateOrUpdateTask' in schema 'dbo'
 CREATE OR ALTER PROCEDURE dbo.uspCreateOrUpdateTask
     @id UNIQUEIDENTIFIER = NULL,
-    @title VARCHAR(30),
-    @description VARCHAR(300) = '',
-    @dueDate SMALLDATETIME = NULL
+    @title VARCHAR(50),
+    @dueDate SMALLDATETIME = NULL,
+    @assignee VARCHAR(255) = '',
+    @description VARCHAR(300) = ''
 AS
 DECLARE @taskExists BIT;
 
 IF @id IS NULL
 INSERT INTO dbo.Tasks
-    (title, [description], dueDate)
+    (title, dueDate, assignee, [description])
 VALUES
-    (@title, @description, @dueDate);
+    (@title, @dueDate, @assignee, @description);
 
 ELSE
 BEGIN
@@ -26,8 +27,9 @@ BEGIN
         UPDATE dbo.Tasks
         SET
             title = @title,
-            [description] = @description,
-            dueDate = @dueDate
+            dueDate = @dueDate,
+            assignee = @assignee,
+            [description] = @description
         WHERE id = @id;
 END
 GO

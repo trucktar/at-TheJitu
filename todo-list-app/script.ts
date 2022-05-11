@@ -97,17 +97,19 @@ document.addEventListener("DOMContentLoaded", async (event) => {
     taskAddButton.addEventListener("click", (event) => taskTitleInput.focus());
     taskTitleForm.addEventListener("submit", async (event) => {
         event.preventDefault();
-        if (taskTitleInput.value.trim())
+
+        const taskTitleText = taskTitleInput.value.trim();
+        if (taskTitleText)
             if (activeView === "taskDetailView") {
                 await TaskMan.updateTask({
                     id: activeTask?.id,
-                    title: taskTitleInput.value,
+                    title: taskTitleText,
                     dueDate: taskDueDateInput.valueAsDate?.toISOString(),
                     description: taskDescriptionInput.value,
                 });
                 taskTitleInput.blur();
             } else {
-                await TaskMan.createTask({ title: taskTitleInput.value });
+                await TaskMan.createTask({ title: taskTitleText });
                 await renderTaskListView();
             }
     });

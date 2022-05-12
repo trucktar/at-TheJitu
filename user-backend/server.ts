@@ -5,6 +5,9 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import dbConf from "./config/dbconf";
+import { confirmAuthentication } from "./middleware/auth";
+import auth from "./routes/auth";
+import users from "./routes/users";
 
 const app = express();
 
@@ -16,8 +19,21 @@ const app = express();
     }
 })();
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
+app.use(express.json());
+app.get("/", [
+    confirmAuthentication,
+    (req: Request, res: Response) => {
+        const user = req.body.user;
+        res.json({ message: `Hello ${user.username}. Welcome!` });
+    },
+]);
+
+app.use("/auth", auth);
+app.use("/users", users);
+
+// Error handler
+app.use((req, res, next) => {
+    return res.status(404);
 });
 
 app.listen(7000, () => {

@@ -1,0 +1,27 @@
+app-navbar {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  background-color: #1976d2;
+  color: white;
+  font-weight: 600;
+}
+
+app-body {
+  margin-top: 32px;
+  padding: 0 16px;
+  display: flex;
+  gap: 32px;
+}
+
+app-footer {
+  height: 64px;
+  margin-top: auto;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: #1976d2;
+  color: white;
+  font-weight: 600;
+}

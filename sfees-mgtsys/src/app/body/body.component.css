@@ -1,0 +1,63 @@
+button {
+  padding: 16px 8px;
+  border: 1px solid white;
+  background-color: #1976d2;
+  color: white;
+}
+button:hover {
+  background-color: #1976d2e1;
+  border: 1px solid black;
+}
+
+.studentDetail {
+  width: 40%;
+}
+.studentDetail h2 {
+  padding: 16px 8px;
+  background-color: #1976d2;
+}
+.studentDetail form {
+  padding: 0 8px;
+  display: flex;
+  flex-direction: column;
+}
+.studentDetail label {
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+.studentDetail input {
+  height: 48px;
+  padding-left: 8px;
+}
+.studentDetail p {
+  margin-top: 8px;
+}
+.studentDetail button {
+  margin-top: 16px;
+  padding: 16px 0;
+}
+
+.studentList {
+  flex-grow: 1;
+}
+.studentList__topRow {
+  padding: 16px 8px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #1976d2;
+}
+.studentList__actions {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+.studentList__students > p {
+  margin: 24px 0;
+}
+.studentList__student {
+  margin: 24px 0;
+  padding-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e3e3e3;
+}

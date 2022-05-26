@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MainComponent } from './main/main.component';
 import { FooterComponent } from './footer/footer.component';
+import { StudentListComponent } from './main/student-list/student-list.component';
 import { SortPipe } from './sort.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 

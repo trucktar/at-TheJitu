@@ -1,4 +1,4 @@
-<div class="studentDetail">
+<!-- <div class="studentDetail">
   <h2>Add a student</h2>
   <form (submit)="onSubmit($event)">
     <label for="studentName">Student Name</label>
@@ -8,9 +8,11 @@
     <input type="number" name="studentBalance" id="studentBalance">
     <button type="submit">Add a student</button>
   </form>
-</div>
+</div> -->
 
-<div class="studentList">
+<app-student-list class="w-100 overflow-scroll" style="max-height: 100%;"></app-student-list>
+
+<!-- <div class="studentList">
   <div class="studentList__topRow">
     <h2>Student Name</h2>
     <h2>Balance</h2>
@@ -31,4 +33,4 @@
       <p [ngStyle]="{color: student.balance <= 0 ? 'green' : 'red'}">{{ student.balance }}</p>
     </div>
   </div>
-</div>
+</div> -->

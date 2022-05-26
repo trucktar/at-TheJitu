@@ -3,14 +3,6 @@ app-main {
   gap: 32px;
 }
 
-app-footer {
-  height: 64px;
-  margin-top: auto;
-  padding: 0 16px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  background-color: #1976d2;
-  color: white;
-  font-weight: 600;
+app-login {
+  max-width: 330px;
 }

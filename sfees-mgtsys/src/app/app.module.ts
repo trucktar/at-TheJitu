@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MainComponent } from './main/main.component';
+import { LoginComponent } from "./login/login.component";
 import { FooterComponent } from './footer/footer.component';
 import { StudentListComponent } from './main/student-list/student-list.component';
 import { SortPipe } from './sort.pipe';

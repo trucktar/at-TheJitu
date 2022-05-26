@@ -1,5 +1,5 @@
-app-body {
-  display: flex;
+app-main {
+  max-height: 100%;
   gap: 32px;
 }
 

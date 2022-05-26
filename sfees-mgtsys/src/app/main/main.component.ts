@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { Student } from '../student';
 
 @Component({
-  selector: 'app-body',
-  templateUrl: './body.component.html',
-  styleUrls: ['./body.component.css'],
+  selector: 'app-main',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.css'],
 })
-export class BodyComponent implements OnInit {
+export class MainComponent implements OnInit {
   students: Student[] = [];
   selectedStudents: Student[] = this.students;
   errorMsg = '';

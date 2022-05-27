@@ -1,14 +1,7 @@
-<h1 class="h2 sticky-top pb-3 px-2 fw-normal bg-white">All students</h1>
+<h1 class="h2 sticky-top pb-3 fw-normal bg-white">All students</h1>
 
 <div class="list-group-flush">
-  <a href="#" class="list-group-item list-group-item-action py-3 active">Benjamin Nyota</a>
-  <a href="#" class="list-group-item list-group-item-action py-3">Freddie Mutua</a>
-  <a href="#" class="list-group-item list-group-item-action py-3">Harrison Gacheru</a>
-  <a href="#" class="list-group-item list-group-item-action py-3">Ashina Barasa</a>
-  <a href="#" class="list-group-item list-group-item-action py-3">Harrison Gacheru</a>
-  <a href="#" class="list-group-item list-group-item-action py-3">Ashina Barasa</a>
-  <a href="#" class="list-group-item list-group-item-action py-3">Harrison Gacheru</a>
-  <a href="#" class="list-group-item list-group-item-action py-3">Ashina Barasa</a>
-  <a href="#" class="list-group-item list-group-item-action py-3">Harrison Gacheru</a>
-  <a href="#" class="list-group-item list-group-item-action py-3">Ashina Barasa</a>
+  <a href="#" class="list-group-item list-group-item-action px-0 py-3" *ngFor="let student of students">
+    {{ student.name }}
+  </a>
 </div>

@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Student } from '../student';
+import { StudentService } from './shared/student.service';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
+  providers: [StudentService],
 })
 export class MainComponent implements OnInit {
   students: Student[] = [];
@@ -60,7 +62,7 @@ export class MainComponent implements OnInit {
 
   sortData(by: 'name' | 'balance') {
     if (by === 'name') this.sortVal = 'name';
-    else this.sortVal = 'balance'
+    else this.sortVal = 'balance';
   }
 
   private displayError(msg: string) {

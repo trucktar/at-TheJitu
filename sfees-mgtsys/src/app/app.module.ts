@@ -3,36 +3,23 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-// Routing
-import { AppRoutingModule } from './app-routing.module';
-// Components
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
-import { MainComponent } from './main/main.component';
-import { LoginComponent } from "./login/login.component";
+import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './footer/footer.component';
-import { StudentAddComponent } from './main/student-add/student-add.component';
-import { StudentListComponent } from './main/student-list/student-list.component';
-// Pipes
 import { SortPipe } from './sort.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    MainComponent,
     LoginComponent,
     FooterComponent,
-    StudentAddComponent,
-    StudentListComponent,
-    SortPipe
+    SortPipe,
   ],
-  imports: [
-    BrowserModule,
-    NgbModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, NgbModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

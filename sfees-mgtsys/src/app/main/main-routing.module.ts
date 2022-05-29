@@ -11,9 +11,14 @@ const routes: Routes = [
     path: '',
     component: MainComponent,
     children: [
-      { path: '', component: StudentListComponent },
+      {
+        path: '',
+        component: StudentListComponent,
+        children: [
+          { path: ':id/edit-balance', component: StudentEditComponent },
+        ],
+      },
       { path: 'add', component: StudentAddComponent },
-      { path: ':id/edit', component: StudentEditComponent },
     ],
   },
 ];

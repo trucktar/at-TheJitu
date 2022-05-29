@@ -10,6 +10,7 @@ import { StudentService } from '../shared/student.service';
 })
 export class StudentListComponent implements OnInit {
   students: Student[] = [];
+
   constructor(private _studentService: StudentService) {}
 
   ngOnInit(): void {

@@ -1,7 +1,17 @@
-<h1 class="h2 sticky-top pb-3 fw-normal bg-white">All students</h1>
+<header class="sticky-top py-3 bg-white border-bottom overflow-scroll">
+  <h1 class="h2 fw-normal">All students</h1>
+</header>
 
-<div class="list-group-flush">
-  <a href="#" class="list-group-item list-group-item-action px-0 py-3" *ngFor="let student of students">
-    {{ student.name }}
-  </a>
+<div class="row">
+  <div class="col list-group-flush">
+    <a class="list-group-item list-group-item-action py-3 d-flex" *ngFor="let student of students"
+       [routerLink]="[student.regId, 'edit-balance']" routerLinkActive="active">
+      {{ student.name }}
+      <span class="ms-auto">{{ student.balance }}</span>
+    </a>
+  </div>
+
+  <div class="col" #edit [hidden]="edit.childElementCount === 1">
+    <router-outlet></router-outlet>
+  </div>
 </div>

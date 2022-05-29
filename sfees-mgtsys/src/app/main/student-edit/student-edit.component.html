@@ -1,0 +1,10 @@
+<form class="row" #balanceForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="col mb-2">
+    <h1 class="h3 py-2 fw-normal">Edit balance</h1>
+    <input type="number" required class="form-control" [(ngModel)]="studentBalance" name="regId"
+           [class.is-valid]="regId.valid" [class.is-invalid]="regId.invalid && (regId.dirty || regId.touched)"
+           #regId="ngModel">
+    <div class="invalid-feedback">* Please provide an integer.</div>
+    <button type="submit" class="btn btn-primary my-2" [disabled]="balanceForm.invalid">Submit</button>
+  </div>
+</form>

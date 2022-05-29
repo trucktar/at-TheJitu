@@ -7,24 +7,30 @@ export class StudentService {
     {
       regId: '1',
       name: 'Benjamin Nyota',
-      email: 'benjamin.nyota@thejitu.com',
-      phone: '07123456768',
+      contactDetails: {
+        email: 'benjamin.nyota@thejitu.com',
+        phone: '07123456768',
+      },
       course: 'The Jitu Training',
       balance: 0,
     },
     {
       regId: '2',
       name: 'Freddie Mwau',
-      email: 'feddie.mwau@thejitu.com',
-      phone: '07234567689',
+      contactDetails: {
+        email: 'feddie.mwau@thejitu.com',
+        phone: '07234567689',
+      },
       course: 'The Jitu Training',
       balance: 0,
     },
     {
       regId: '3',
       name: 'Harrison Gacheru',
-      email: 'harrison.gacheru@thejitu.com',
-      phone: '07345676890',
+      contactDetails: {
+        email: 'harrison.gacheru@thejitu.com',
+        phone: '07345676890',
+      },
       course: 'The Jitu Training',
       balance: 0,
     },

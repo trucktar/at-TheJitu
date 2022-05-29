@@ -1,29 +1,66 @@
-<h1 class="h2 sticky-top pb-3 fw-normal bg-white">Add student</h1>
+<h1 class="h2 sticky-top mb-3 py-3 fw-normal bg-white">Add
+  student</h1>
 
-<form>
+<form class="row flex-column" [formGroup]="studentForm" (ngSubmit)="onSubmit()">
   <div class="mb-2">
     <label for="studentRegId" class="form-label">Reg Id.</label>
-    <input type="text" class="form-control" id="studentRegId">
+    <input id="studentRegId" type="text" class="form-control" formControlName="regId"
+           [class.is-valid]="studentForm.get('regId')!.valid"
+           [class.is-invalid]="studentForm.get('regId')!.invalid && (studentForm.get('regId')!.dirty || studentForm.get('regId')!.touched)">
+    <div class="invalid-feedback">* Please provide a registration id.</div>
   </div>
+
   <div class="mb-2">
     <label for="studentName" class="form-label">Fullname</label>
-    <input type="text" class="form-control" id="studentName">
+    <input id="studentName" type="text" class="form-control" formControlName="name"
+           [class.is-valid]="studentForm.get('name')!.valid"
+           [class.is-invalid]="studentForm.get('name')!.invalid && (studentForm.get('name')!.dirty || studentForm.get('name')!.touched)">
+    <div class="invalid-feedback">* Please provide a fullname.</div>
   </div>
-  <div class="mb-2">
-    <label for="studentEmail" class="form-label">Email</label>
-    <input type="email" class="form-control" id="studentEmail">
+
+  <div class="" formGroupName="contactDetails">
+    <div class="mb-2">
+      <label for="studentEmail" class="form-label">Email</label>
+      <input id="studentEmail" type="email" class="form-control" formControlName="email"
+             [class.is-valid]="studentForm.get('contactDetails.email')!.valid"
+             [class.is-invalid]="studentForm.get('contactDetails.email')!.invalid && (studentForm.get('contactDetails.email')!.dirty || studentForm.get('contactDetails.email')!.touched)">
+      <div class="invalid-feedback" *ngIf="studentForm.get('contactDetails.email')!.errors?.['required']">
+        * Please provide an email address.
+      </div>
+      <div class="invalid-feedback" *ngIf="studentForm.get('contactDetails.email')!.errors?.['email']">
+        * The provided email address is invalid.
+      </div>
+      <div class="invalid-feedback" *ngIf="studentForm.get('contactDetails.email')!.errors?.['pattern']">
+        * The email domain should be <strong>thejitu.com</strong>.
+      </div>
+    </div>
+    <div class="mb-2">
+      <label for="studentPhone" class="form-label">Phone No.</label>
+      <input id="studentPhone" type="text" class="form-control" formControlName="phone"
+             [class.is-valid]="studentForm.get('contactDetails.phone')!.valid"
+             [class.is-invalid]="studentForm.get('contactDetails.phone')!.invalid && (studentForm.get('contactDetails.phone')!.dirty || studentForm.get('contactDetails.phone')!.touched)">
+      <div class="invalid-feedback" *ngIf="studentForm.get('contactDetails.phone')?.errors?.['required']">
+        * Please provide a valid phone number.
+      </div>
+      <div class="invalid-feedback" *ngIf="studentForm.get('contactDetails.phone')?.errors?.['pattern']">
+        * A valid phone number should begin with 01 or 07.
+      </div>
+      <div class="invalid-feedback"
+           *ngIf="studentForm.get('contactDetails.phone')?.errors?.['minLength'] || studentForm.get('contactDetails.phone')?.errors?.['maxLength']">
+        * The minmax length should be 10.
+      </div>
+    </div>
   </div>
-  <div class="mb-2">
-    <label for="studentPhone" class="form-label">Phone No.</label>
-    <input type="text" class="form-control" id="studentPhone">
-  </div>
+
   <div class="mb-2">
     <label for="studentCourse" class="form-label">Course</label>
-    <input type="text" class="form-control" id="studentCourse">
+    <input id="studentCourse" type="text" class="form-control" formControlName="course"
+           [class.is-valid]="studentForm.get('course')!.valid"
+           [class.is-invalid]="studentForm.get('course')!.invalid && (studentForm.get('course')!.dirty || studentForm.get('course')!.touched)">
+    <div class="invalid-feedback">* A course is required.</div>
   </div>
-  <div class="mb-2">
-    <label for="studentBalance" class="form-label">Balance</label>
-    <input type="text" class="form-control" id="studentBalance">
+
+  <div class="">
+    <button type="submit" class="btn btn-primary my-2" [disabled]="studentForm.invalid">Submit</button>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
 </form>

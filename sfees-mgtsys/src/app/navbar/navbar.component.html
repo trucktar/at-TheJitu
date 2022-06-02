@@ -22,21 +22,6 @@
           Add student
         </a>
       </li>
-      <li class="nav-item dropdown" ngbDropdown>
-        <button type="button" class="btn btn-link nav-link dropdown-toggle" ngbDropdownToggle>Get students</button>
-
-        <ul class="dropdown-menu" ngbDropdownMenu>
-          <li ngbDropdownItem>
-            <a class="dropdown-item" (click)="isMenuCollapsed=true">All</a>
-          </li>
-          <li ngbDropdownItem>
-            <a class="dropdown-item" (click)="isMenuCollapsed=true">With balance</a>
-          </li>
-          <li ngbDropdownItem>
-            <a class="dropdown-item" (click)="isMenuCollapsed=true">Without balance</a>
-          </li>
-        </ul>
-      </li>
     </ul>
 
     <button type="button" class="btn btn-primary" *ngIf="!isLoggedIn" (click)="gotoLogin()">Log In</button>
